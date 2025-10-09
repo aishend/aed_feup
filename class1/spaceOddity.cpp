@@ -1,15 +1,12 @@
 #include <iostream>
 
 
-bool isOdd(int number) {
-    if (number % 2) {
-        return true;
-    }
-    return false; 
+inline bool isOdd(int number) {
+    return (number & 1) != 0; 
 }
 
 
-int lastOddNumber; 
+int lastOddNumber = -1; 
 int count = 0;
 
 int removeOds(int a[], int arraySize) {
