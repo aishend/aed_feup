@@ -6,21 +6,18 @@ using namespace std;
 // x = maximo, k igual ao numreo de grupos
 bool isPossible(const vector<int> & v, int x, int k) {
     int sum = 0;
-    int groupCount = 0;
-
-    for(int i = 0; i < v.size(); i ++) {
-        
+    int groups = 1;
+    for (int i = 0; i < (int)v.size(); ++i) {
+        if (v[i] > x) return false;        
         if (sum + v[i] <= x) {
-            if (i == v.size() - 1) return true;
             sum += v[i];
-            
         } else {
-            if (groupCount == k - 1) return false;
+            groups++;
             sum = v[i];
-            groupCount++;
+            if (groups > k) return false;
         }
     }
-    return false;
+    return true;
 }
 
 int main() {
@@ -42,7 +39,7 @@ int main() {
     
     for(int i = 0; i < nDifNDays; i++) {
         int res;
-        int low = 1;
+        int low = 0;
         int high = sumAll;
         cin >> nDays;
 
